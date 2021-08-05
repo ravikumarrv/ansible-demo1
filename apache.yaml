@@ -1,0 +1,18 @@
+---
+- name: install apache
+  hosts: all
+  become: true
+
+  tasks:
+  - name: install java
+    yum:
+      name: java
+      state: latest
+  - name: install apache
+    yum:
+      name: httpd
+      state: present
+  - name: start apache
+    service:
+      name: httpd
+      state: started
